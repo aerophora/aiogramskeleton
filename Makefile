@@ -16,9 +16,9 @@ lint: reformat
 .PHONY: migration
 migration:
 	@poetry run alembic revision \
-	  --autogenerate \
-	  --rev-id $(shell python migrations/_get_revision_id.py) \
-	  --message $(message)
+	--autogenerate \
+	--rev-id $(shell python migrations/_get_revision_id.py) \
+	--message $(message)
 
 # Apply database migrations
 .PHONY: migrate
@@ -72,10 +72,6 @@ app-destroy:
 app-logs:
 	@docker-compose logs -f bot
 
-# Drop all
-.PHONY: app-drop
-app-drop: app-destroy
-	docker container prune -f
-	docker images -q | xargs docker rmi -f
-	docker volume prune -f
-
+# Build, run and log the bot with a single command
+.PHONY: app-force
+app-force: app-build app-run app-logs

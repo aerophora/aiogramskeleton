@@ -1,25 +1,16 @@
-# Load all locales from .env
-CURRENT_LOCALES=$(grep '^TELEGRAM_LOCALES=' ./.env | cut -d '=' -f 2)
+#!/bin/bash
 
-# Initialize empty variable for processed locales
-PROCESSED_LOCALES=""
+locales=$(grep '^TELEGRAM_LOCALES=' .env | cut -d '=' -f 2-)
 
-# Set separator for splitting locales by comma
-IFS=','
+version=$(poetry version | awk '{print $1}')
 
-# Loop through each locale in CURRENT_LOCALES
-for lang in $CURRENT_LOCALES; do
-    # Append each locale to PROCESSED_LOCALES with a space separator
-    PROCESSED_LOCALES="$PROCESSED_LOCALES -l $lang"
+code_path="aiogram_bot_template/"
+output_path="translations/"
+
+args=(poetry run ftl-extract "$code_path" "$output_path" --default-ftl-file messages.ftl)
+
+for locale in $(echo "$locales" | jq -r '.[]'); do
+    args+=("-l" "$locale")
 done
 
-# Reset IFS to default
-unset IFS
-
-# Delete first character (space)
-PROCESSED_LOCALES="${PROCESSED_LOCALES#?}"
-
-# Run the script with processed locales as arguments
-# shellcheck disable=SC2086
-poetry run ftl-extract "$(poetry version | awk '{print $1}')"/ translations/ \
---default-ftl-file messages.ftl $PROCESSED_LOCALES
+"${args[@]}"
