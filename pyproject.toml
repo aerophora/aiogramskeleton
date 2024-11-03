@@ -3,12 +3,12 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "aiogram_bot_template"
-version = "1.0"
-description = "Aiogram 3.x bot template using PostgreSQL (asyncpg) with SQLAlchemy + alembic"
-authors = ["wakaree <nullmatawasoradesu@gmail.com>"]
+name = "aiogramskeleton"
+version = "0.1"
+description = "Powerful Aiogram 3.x template tailored for user comfort"
+authors = ["lowton5 <poka.tak.45@gmail.com>"]
 readme = "README.md"
-repository = "https://github.com/wakaree/aiogram_bot_template"
+repository = "https://github.com/lowton5/AiogramSkeleton"
 
 [tool.poetry.dependencies]
 python = "^3.11,<3.13"  # Excluded 3.13 version due to msgspec incompatibility

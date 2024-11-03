@@ -6,9 +6,9 @@ from sqlalchemy import URL, MetaData
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
-from aiogram_bot_template.models.config.env import PostgresConfig
-from aiogram_bot_template.models.sql.base import Base
-from aiogram_bot_template.utils.logging import setup_logger
+from aiogramskeleton.models.config.env import PostgresConfig
+from aiogramskeleton.models.sql.base import Base
+from aiogramskeleton.utils.logging import setup_logger
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
