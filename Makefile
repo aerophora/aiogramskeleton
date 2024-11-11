@@ -75,3 +75,7 @@ app-logs:
 # Build, run and log the bot with a single command
 .PHONY: app-force
 app-force: app-build app-run app-logs
+
+# Deleting and building anew with logs 
+.PHONY: app-anew
+app-anew: app-destroy app-force

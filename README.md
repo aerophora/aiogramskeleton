@@ -2,11 +2,11 @@
 # aiogram_bot_template
 
 ## System dependencies
-- Python 3.11+
+- Python 3.11 or 3.12
 - Docker
-- docker-compose
-- make
-- poetry
+- Docker-compose
+- Make
+- Poetry
 
 ## Deployment
 ### Via [Docker](https://www.docker.com/)
@@ -27,16 +27,22 @@
 ## Development
 ### Setup environment
 
-    poetry install
+```shell
+poetry install
+```
 
 ### Update database tables structure
 **Make migration script:**
 
-    make migration message=MESSAGE_WHAT_THE_MIGRATION_DOES
+```shell
+make migration message=MESSAGE_WHAT_THE_MIGRATION_DOES
+```
 
 **Run migrations:**
 
-    make migrate
+```shell
+make migrate
+```
 
 ## Used technologies:
 - [Aiogram 3.x](https://github.com/aiogram/aiogram) (Telegram bot framework)
@@ -45,5 +51,4 @@
 - [Alembic](https://alembic.sqlalchemy.org/en/latest/) (lightweight database migration tool)
 - [Redis](https://redis.io/docs/) (in-memory data storage for FSM and caching)
 - [Project Fluent](https://projectfluent.org/) (modern localization system)
-- [FTL-Extract](https://github.com/andrew000/FTL-Extract) (tool for extracting localizable strings
-  from source code files in Fluent format)
+- [FTL-Extract](https://github.com/andrew000/FTL-Extract) (tool for extracting localizable strings from source code files in Fluent format)
