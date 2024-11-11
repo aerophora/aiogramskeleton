@@ -2,12 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Final
 
-from aiogram import F, Router
-from aiogram.filters import MagicData
+from aiogram import Router
+from aiogram.filters import CommandStart
 from aiogram.types import Message
 from aiogram_i18n import I18nContext
-
-from ...filters.admin import CheckAdmin
 
 if TYPE_CHECKING:
     from ....models.sql import User
@@ -15,6 +13,6 @@ if TYPE_CHECKING:
 router: Final[Router] = Router(name=__name__)
 
 
-@router.message(CheckAdmin(MagicData(F.config.telegram.admin_ids)))
+@router.message(CommandStart())
 async def start_command(message: Message, i18n: I18nContext, user: User) -> Any:
     return message.answer(text=i18n.messages.start(name=user.mention))
