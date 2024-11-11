@@ -46,9 +46,9 @@ app-build:
 app-run-db:
 	@docker-compose up -d --remove-orphans postgres redis
 
-# Restart bot in docker container
+# Rebuild bot in docker container
 .PHONY: app-rebuild
-app-restart: app-stop app-build app-start
+app-rebuild: app-stop app-build app-start
 
 # Restart bot in docker container
 .PHONY: app-restart
@@ -81,7 +81,7 @@ app-logs:
 
 # Build, run and log the bot with a single command
 .PHONY: app-force
-app-force: app-build app-run app-logs
+app-force: app-build app-start app-logs
 
 # Deleting and building anew with logs 
 .PHONY: app-anew
