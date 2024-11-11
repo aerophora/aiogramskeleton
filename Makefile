@@ -46,10 +46,17 @@ app-build:
 app-run-db:
 	@docker-compose up -d --remove-orphans postgres redis
 
+# Restart bot in docker container
+.PHONY: app-rebuild
+app-restart: app-stop app-build app-start
+
+# Restart bot in docker container
+.PHONY: app-restart
+app-restart: app-stop app-start
+
 # Run bot in docker container
-.PHONY: app-run
-app-run:
-	@docker-compose stop
+.PHONY: app-start
+app-start:
 	@docker-compose up -d --remove-orphans
 
 # Stop docker containers
